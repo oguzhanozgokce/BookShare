@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.oguzhanozgokce.bookshare.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.oguzhanozgokce.bookshare.ui.profile.ProfileFragment"

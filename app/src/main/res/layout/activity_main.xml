@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navGraph="@navigation/navigation"
+        app:navGraph="@navigation/auth_graph"
         app:defaultNavHost="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,6 +27,7 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/menu"
         app:labelVisibilityMode="labeled"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -1,6 +1,8 @@
 package com.oguzhanozgokce.bookshare;
 
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,9 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
-        if (navHostFragment != null) {
-            navController = navHostFragment.getNavController();
-            NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
-        }
+        assert navHostFragment != null;
+        navController = navHostFragment.getNavController();
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            boolean showBottomNav = destination.getId() == R.id.homeFragment
+                    || destination.getId() == R.id.profileFragment;
+
+            binding.bottomNavigationView.setVisibility(showBottomNav ? View.VISIBLE : View.GONE);
+        });
     }
 }
