@@ -15,6 +15,7 @@ import com.oguzhanozgokce.bookshare.data.model.ListingDto;
 import com.oguzhanozgokce.bookshare.data.model.ListingType;
 import com.oguzhanozgokce.bookshare.domain.BookRepository;
 import com.oguzhanozgokce.bookshare.domain.error.FirebaseError;
+import com.oguzhanozgokce.bookshare.domain.model.Genre;
 import com.oguzhanozgokce.bookshare.domain.model.Listing;
 import com.oguzhanozgokce.bookshare.domain.model.User;
 
@@ -119,6 +120,7 @@ public class BookRepositoryImpl implements BookRepository {
                 180,
                 "Nilüfer, Bursa",
                 false,
+                Genre.EDUCATION,
                 "2025-04-10",
                 "2025-04-20",
                 "2025-04-05",
@@ -136,6 +138,7 @@ public class BookRepositoryImpl implements BookRepository {
                 0,
                 "Odunpazarı, Eskişehir",
                 true,
+                Genre.FANTASY,
                 "2025-04-08",
                 "2025-04-15",
                 "2025-04-05",
@@ -163,6 +166,7 @@ public class BookRepositoryImpl implements BookRepository {
                 220,
                 "Konyaaltı, Antalya",
                 false,
+                Genre.SCIENCE,
                 "2025-04-12",
                 "2025-04-22",
                 "2025-04-06",
@@ -179,6 +183,7 @@ public class BookRepositoryImpl implements BookRepository {
                 0,
                 "Yenişehir, Mersin",
                 true,
+                Genre.FICTION,
                 "2025-04-10",
                 "2025-04-17",
                 "2025-04-06",

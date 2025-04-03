@@ -7,7 +7,6 @@ public class User {
     private String email;
     private Map<String, Listing> listings;
 
-    // Empty constructor required by Firebase
     public User() {}
 
     public User(String name, String email, Map<String, Listing> listings) {

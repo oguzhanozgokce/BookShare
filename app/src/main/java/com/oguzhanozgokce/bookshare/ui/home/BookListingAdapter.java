@@ -1,12 +1,15 @@
 package com.oguzhanozgokce.bookshare.ui.home;
 
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.oguzhanozgokce.bookshare.R;
 import com.oguzhanozgokce.bookshare.databinding.BookItemLayoutBinding;
 import com.oguzhanozgokce.bookshare.domain.model.Listing;
 
@@ -53,6 +56,13 @@ public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.
             binding.textPrice.setText(formattedPrice);
             binding.textLocation.setText(listing.getLocation());
             binding.textType.setText(listing.getType().name());
+            GradientDrawable background = (GradientDrawable)
+                    ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.genre_tag_background);
+
+            if (background != null) {
+                background.setColor(ContextCompat.getColor(binding.getRoot().getContext(), listing.getGenre().getColorResId()));
+                binding.textGenre.setBackground(background);
+            }
 
             binding.getRoot().setOnClickListener(v -> {
                 int position = getAdapterPosition();
