@@ -10,6 +10,7 @@ public class ListingDto {
     public Integer price;
     public String address;
     public Boolean isShared;
+    public String genre;
     public String startDate;
     public String endDate;
     public String createdAt;

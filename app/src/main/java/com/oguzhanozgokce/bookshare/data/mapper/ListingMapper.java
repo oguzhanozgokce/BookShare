@@ -2,6 +2,7 @@ package com.oguzhanozgokce.bookshare.data.mapper;
 
 import com.oguzhanozgokce.bookshare.data.model.ListingDto;
 import com.oguzhanozgokce.bookshare.data.model.ListingType;
+import com.oguzhanozgokce.bookshare.domain.model.Genre;
 import com.oguzhanozgokce.bookshare.domain.model.Listing;
 
 public class ListingMapper {
@@ -16,6 +17,7 @@ public class ListingMapper {
                 dto.price != null ? dto.price : 0,
                 safe(dto.address),
                 dto.isShared != null && dto.isShared,
+                Genre.from(dto.genre),
                 safe(dto.startDate),
                 safe(dto.endDate),
                 safe(dto.createdAt),

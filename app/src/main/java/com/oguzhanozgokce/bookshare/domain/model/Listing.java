@@ -14,13 +14,14 @@ public class Listing implements Serializable {
     private final int price;
     private final String address;
     private final boolean isShared;
+    private final Genre genre;
     private final String startDate;
     private final String endDate;
     private final String createdAt;
     private final String updatedAt;
 
     public Listing(String id, String title, String description, String condition, String location,
-                   ListingType type, int price, String address, boolean isShared,
+                   ListingType type, int price, String address, boolean isShared, Genre genre,
                    String startDate, String endDate, String createdAt, String updatedAt) {
         this.id = id;
         this.title = title;
@@ -31,6 +32,7 @@ public class Listing implements Serializable {
         this.price = price;
         this.address = address;
         this.isShared = isShared;
+        this.genre = genre;
         this.startDate = startDate;
         this.endDate = endDate;
         this.createdAt = createdAt;
@@ -46,8 +48,10 @@ public class Listing implements Serializable {
     public int getPrice() { return price; }
     public String getAddress() { return address; }
     public boolean isShared() { return isShared; }
+    public Genre getGenre() { return genre; }
     public String getStartDate() { return startDate; }
     public String getEndDate() { return endDate; }
     public String getCreatedAt() { return createdAt; }
     public String getUpdatedAt() { return updatedAt; }
+
 }
