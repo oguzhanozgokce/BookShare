@@ -21,9 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clean Code"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:textColor="@color/text_primary"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="@font/font_worksans"/>
 
         <TextView
             android:id="@+id/textDescription"
@@ -32,16 +33,31 @@
             android:layout_marginTop="4dp"
             android:text="Robert C. Martin's software craftsmanship guide"
             android:textColor="@color/text_secondary"
+            android:fontFamily="@font/font_worksans"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Education"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:fontFamily="@font/font_worksans"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/textPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:text="150 ₺"
             android:textColor="@color/text_price"
             android:textStyle="bold"
+            android:fontFamily="@font/font_worksans"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -64,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Istanbul - Kadikoy"
                 android:textColor="@color/text_hint"
+                android:fontFamily="@font/font_worksans"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -76,10 +93,13 @@
             android:textColor="@color/text_tag_green"
             android:textStyle="bold"
             android:textSize="12sp"
+            android:fontFamily="@font/font_worksans"
             android:background="@drawable/tag_background"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
             android:layout_marginEnd="8dp"/>
+
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

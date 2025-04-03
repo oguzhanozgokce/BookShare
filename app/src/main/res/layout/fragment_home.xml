@@ -5,29 +5,56 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16.dp"
+    android:background="@color/background"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/textHomeTitle"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Explore Listings"
-        android:textColor="@color/text_primary"
-        android:textSize="24sp"
-        android:fontFamily="serif"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginHorizontal="8dp"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_header_flat"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_book_24"
+            android:contentDescription="Book icon"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/textHomeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Explore Listings"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:fontFamily="@font/font_worksans"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerListings"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/listings_list_content_desc"
         android:clipToPadding="false"
         android:paddingTop="8dp"
         android:scrollbars="vertical"
+        android:layout_marginTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/textHomeTitle"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

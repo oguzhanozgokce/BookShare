@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="oguz_yellow">#FFFFEB3B</color>
     <color name="oguz_dark_yellow">#FF8B4513</color>
@@ -18,4 +19,11 @@
     <color name="bg_tag">#E8F5E9</color>
 
     <color name="border_subtle">#DDDDDD</color>
+
+    <color name="genre_education_bg">#E3F2FD</color>
+    <color name="genre_fiction_bg">#FCE4EC</color>
+    <color name="genre_science_bg">#E8F5E9</color>
+    <color name="genre_fantasy_bg">#F3E5F5</color>
+    <color name="genre_default_bg">#EEEEEE</color>
+
 </resources>
