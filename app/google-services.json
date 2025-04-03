@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4994820312",
+    "project_id": "bookshare-c2551",
+    "storage_bucket": "bookshare-c2551.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4994820312:android:ff9f4f43ffb064a6f2cfad",
+        "android_client_info": {
+          "package_name": "com.oguzhanozgokce.bookshare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcnNHxlLw-rdBxYeB4o6xUvoVrCf61dIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

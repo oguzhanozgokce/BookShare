@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BookShare</string>
+    <string name="first_input">First Input</string>
+    <string name="second_input">Second Input</string>
+    <string name="submit">Submit</string>
+    <string name="shopping_icon_desc">shopping\n</string>
+    <string name="dollar_icon_desc">adet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+</resources>

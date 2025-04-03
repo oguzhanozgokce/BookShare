@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="oguz_yellow">#FFFFEB3B</color>
+    <color name="oguz_dark_yellow">#FF8B4513</color>
+    <color name="oguz_light_dark_gray">#FFBDBDBD</color>
+    <color name="oguz_dark_gray">#212121</color>
+
+    <color name="text_primary">#333333</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#888888</color>
+    <color name="text_price">#1E88E5</color>
+    <color name="text_tag_green">#4CAF50</color>
+
+    <color name="bg_card">#F9F9F9</color>
+    <color name="bg_tag">#E8F5E9</color>
+
+    <color name="border_subtle">#DDDDDD</color>
+</resources>
