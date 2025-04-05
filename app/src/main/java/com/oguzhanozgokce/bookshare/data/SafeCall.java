@@ -1,5 +1,7 @@
 package com.oguzhanozgokce.bookshare.data;
 
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.oguzhanozgokce.bookshare.common.Result;
@@ -17,34 +19,21 @@ public class SafeCall {
             return mapAuthException(e);
 
         } catch (FirebaseFirestoreException e) {
-            return mapFirestoreException(e);
+            return mapFireStoreException(e);
 
         } catch (Exception e) {
+            Log.e("SafeCall", "An error occurred: ", e);
             return Result.error(FirebaseError.UNKNOWN_ERROR);
         }
     }
 
     private static <T> Result<T, FirebaseError> mapAuthException(FirebaseAuthException e) {
-        switch (e.getErrorCode()) {
-            case "ERROR_USER_NOT_FOUND":
-                return Result.error(FirebaseError.AUTH_USER_NOT_FOUND);
-            case "ERROR_EMAIL_ALREADY_IN_USE":
-                return Result.error(FirebaseError.AUTH_EMAIL_ALREADY_IN_USE);
-            case "ERROR_NETWORK_REQUEST_FAILED":
-                return Result.error(FirebaseError.NETWORK_REQUEST_FAILED);
-            default:
-                return Result.error(FirebaseError.AUTH_INVALID_CREDENTIALS);
-        }
+        FirebaseError error = FirebaseError.fromCode(e.getErrorCode());
+        return Result.error(error);
     }
 
-    private static <T> Result<T, FirebaseError> mapFirestoreException(FirebaseFirestoreException e) {
-        switch (e.getCode()) {
-            case NOT_FOUND:
-                return Result.error(FirebaseError.FIRESTORE_DOCUMENT_NOT_FOUND);
-            case PERMISSION_DENIED:
-                return Result.error(FirebaseError.FIRESTORE_PERMISSION_DENIED);
-            default:
-                return Result.error(FirebaseError.UNKNOWN_ERROR);
-        }
+    private static <T> Result<T, FirebaseError> mapFireStoreException(FirebaseFirestoreException e) {
+        FirebaseError error = FirebaseError.fromCode(e.getCode().name());
+        return Result.error(error);
     }
 }
