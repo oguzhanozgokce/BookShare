@@ -12,6 +12,7 @@ import com.oguzhanozgokce.bookshare.domain.model.Listing;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import javax.inject.Inject;
@@ -20,7 +21,7 @@ import javax.inject.Inject;
 public class HomeViewModel extends ViewModel {
     private final BookRepository bookRepository;
 
-    private final MutableLiveData<HomeUiState> uiState = new MutableLiveData<>();
+    private final MutableLiveData<HomeUiState> uiState = new MutableLiveData<>(HomeUiState.initial());
 
     public LiveData<HomeUiState> getUiState() {
         return uiState;
@@ -32,12 +33,13 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void loadAllListings() {
-        uiState.setValue(new HomeUiState(true, null, null));
+        updateState(HomeUiState::withLoading);
         Result<List<Listing>, FirebaseError> result = bookRepository.getAllListings();
-        result.fold(
-                listings -> uiState.setValue(new HomeUiState(false, listings, null)),
-                error -> uiState.setValue(new HomeUiState(false, null, error))
-        );
+        if (result.isSuccess()) {
+            updateState(state -> state.withData(result.getData()));
+        } else {
+            updateState(state -> state.withError(result.getError()));
+        }
     }
 
     public void loadSaleListings() {
@@ -69,6 +71,14 @@ public class HomeViewModel extends ViewModel {
         };
 
         result.fold(onSuccess, onError);
+    }
+
+    private void updateState(Function<HomeUiState, HomeUiState> updater) {
+        HomeUiState current = uiState.getValue();
+        if (current == null) {
+            current = HomeUiState.initial();
+        }
+        uiState.setValue(updater.apply(current));
     }
 }
 

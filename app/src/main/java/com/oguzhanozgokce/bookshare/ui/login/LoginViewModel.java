@@ -47,7 +47,7 @@ public class LoginViewModel extends ViewModel {
             Result<String, FirebaseError> result = authRepository.loginUser(email, password);
             if (result.isSuccess()) {
                 updateState(LoginState::success);
-            } else if (result.isError()) {
+            } else {
                 FirebaseError error = result.getError();
                 updateState(state -> state.withError(error.getMessage()));
             }

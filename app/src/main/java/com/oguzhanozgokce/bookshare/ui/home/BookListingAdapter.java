@@ -38,7 +38,7 @@ public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.
         holder.bind(getItem(position), clickListener);
     }
 
-    class BookViewHolder extends RecyclerView.ViewHolder {
+    static class BookViewHolder extends RecyclerView.ViewHolder {
         private final BookItemLayoutBinding binding;
 
         public BookViewHolder(BookItemLayoutBinding binding) {
