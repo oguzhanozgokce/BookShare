@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FFFFFF</color>
+    <color name="loading_overlay">#B3FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="oguz_yellow">#FFFFEB3B</color>
     <color name="oguz_dark_yellow">#FF8B4513</color>

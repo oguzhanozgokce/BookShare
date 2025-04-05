@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -38,8 +39,11 @@ public class WelcomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.buttonLogin.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.action_global_homeFragment);
-
+            navController.navigate(R.id.action_welcomeFragment_to_loginFragment);
+        });
+        binding.buttonRegister.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_welcomeFragment_to_registerFragment);
         });
     }
 }
