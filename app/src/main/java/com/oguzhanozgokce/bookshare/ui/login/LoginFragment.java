@@ -62,7 +62,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void initObservers() {
-        viewModel.getLoginState().observe(getViewLifecycleOwner(), state -> {
+        viewModel.uiState.observe(getViewLifecycleOwner(), state -> {
             binding.loadingOverlay.setVisibility(state.isLoading() ? View.VISIBLE: View.GONE);
             binding.progressBar.setVisibility(state.isLoading() ? View.VISIBLE : View.GONE);
             binding.editEmail.setText(state.getEmail());

@@ -33,6 +33,10 @@ public class LoginState {
 
     public boolean isError() { return status == Status.ERROR; }
 
+    public LoginState withEmailAndPassword(String email, String password) {
+        return new LoginState(email, password, null, Status.IDLE);
+    }
+
     public LoginState withError(String errorMessage) {
         return new LoginState(email, password, errorMessage, Status.ERROR);
     }

@@ -1,31 +1,26 @@
 package com.oguzhanozgokce.bookshare.ui.login;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
+import com.oguzhanozgokce.bookshare.common.BaseViewModel;
 import com.oguzhanozgokce.bookshare.common.Result;
 import com.oguzhanozgokce.bookshare.data.datastore.SessionManager;
 import com.oguzhanozgokce.bookshare.domain.AuthRepository;
 import com.oguzhanozgokce.bookshare.domain.error.FirebaseError;
 
-import java.util.Objects;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class LoginViewModel extends ViewModel {
+public class LoginViewModel extends BaseViewModel<LoginState> {
 
     private final AuthRepository authRepository;
     private final SessionManager sessionManager;
 
-    private final MutableLiveData<LoginState> _loginState = new MutableLiveData<>(LoginState.initial());
-    public LiveData<LoginState> getLoginState() {
-        return _loginState;
+    @Override
+    protected LoginState initialState() {
+        return LoginState.initial();
     }
 
     @Inject
@@ -38,7 +33,7 @@ public class LoginViewModel extends ViewModel {
     private void loadSavedCredentials() {
         String email = sessionManager.getEmail();
         String password = sessionManager.getPassword();
-        _loginState.setValue(LoginState.initial(email, password));
+        updateState(state -> state.withEmailAndPassword(email, password));
     }
 
     public void login(String email, String password) {
@@ -52,12 +47,5 @@ public class LoginViewModel extends ViewModel {
                 updateState(state -> state.withError(error.getMessage()));
             }
         });
-    }
-
-    private void updateState(Function<LoginState, LoginState> updateFn) {
-        LoginState current = _loginState.getValue();
-        if (current != null) {
-            _loginState.postValue(updateFn.apply(current));
-        }
     }
 }
