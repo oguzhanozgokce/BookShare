@@ -59,6 +59,9 @@ dependencies {
     implementation (libs.hilt.android)
     annotationProcessor (libs.hilt.compiler)
 
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
+
     //Gson
     implementation(libs.gson)
 

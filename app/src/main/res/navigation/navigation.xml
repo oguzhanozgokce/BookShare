@@ -9,10 +9,36 @@
         android:id="@+id/homeFragment"
         android:name="com.oguzhanozgokce.bookshare.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.oguzhanozgokce.bookshare.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.oguzhanozgokce.bookshare.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.oguzhanozgokce.bookshare.ui.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.oguzhanozgokce.bookshare.ui.purchase.PurchaseFragment"
+        android:label="fragment_purchase"
+        tools:layout="@layout/fragment_purchase" />
 </navigation>

@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#1E88E5</color>
     <color name="background">#FFFFFF</color>
     <color name="loading_overlay">#B3FFFFFF</color>
     <color name="transparent">#00000000</color>
@@ -18,13 +19,29 @@
 
     <color name="bg_card">#F9F9F9</color>
     <color name="bg_tag">#E8F5E9</color>
+    <color name="bg_tag_yellow">#FFF9C4</color>
 
     <color name="border_subtle">#DDDDDD</color>
+    <color name="border_accent">#E0F2E0</color>
 
     <color name="genre_education_bg">#E3F2FD</color>
     <color name="genre_fiction_bg">#FCE4EC</color>
     <color name="genre_science_bg">#E8F5E9</color>
     <color name="genre_fantasy_bg">#F3E5F5</color>
     <color name="genre_default_bg">#EEEEEE</color>
+
+    <!-- Added for DetailFragment -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_background_accent">#F5F5F5</color>
+    <color name="card_background_tinted">#FAFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="primary_light">#FFF9C4
+    </color> <!-- Example: Lighter version of your primary yellow -->
+    <color name="primary_dark">#F57F17
+    </color>  <!-- Example: Darker version of your primary yellow -->
+
+    <!-- Added for Profile -->
+    <color name="accent">#FF9800</color>
+    <color name="error">#F44336</color>
 
 </resources>

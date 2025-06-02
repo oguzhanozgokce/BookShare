@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -45,6 +46,8 @@ public class LoginFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         initObservers();
         initListeners();
+        binding.iconBack.setOnClickListener(v -> backNavigate());
+        binding.textForgotPassword.setOnClickListener(v -> navigateToResetPasswordFragment());
     }
 
     private void initListeners() {
@@ -90,6 +93,16 @@ public class LoginFragment extends Fragment {
     private String safeText(EditText editText) {
         Editable text = editText.getText();
         return text != null ? text.toString().trim() : "";
+    }
+
+    private void backNavigate() {
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.popBackStack();
+    }
+
+    private void navigateToResetPasswordFragment() {
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_loginFragment_to_resetPasswordFragment);
     }
 
     @Override

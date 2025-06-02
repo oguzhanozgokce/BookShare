@@ -20,5 +20,10 @@
         <item name="cornerRadius">50dp</item>
     </style>
 
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/font_worksans</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>

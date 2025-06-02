@@ -11,9 +11,9 @@ import com.oguzhanozgokce.bookshare.data.SafeCall;
 import com.oguzhanozgokce.bookshare.data.datastore.SessionManager;
 import com.oguzhanozgokce.bookshare.domain.AuthRepository;
 import com.oguzhanozgokce.bookshare.domain.error.FirebaseError;
-import com.oguzhanozgokce.bookshare.domain.model.User;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
@@ -41,10 +41,17 @@ public class AuthRepositoryImpl implements AuthRepository {
 
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
             String uid = firebaseUser.getUid();
-            User user = new User(name, email, new HashMap<>());
+
+            // Basit user document oluştur
+            Map<String, Object> userData = new HashMap<>();
+            userData.put("name", name);
+            userData.put("email", email);
+            userData.put("listings", new HashMap<String, Object>());
+            userData.put("savedListings", new HashMap<String, Boolean>());
+
             Task<Void> saveTask = db.collection("users")
                     .document(uid)
-                    .set(user);
+                    .set(userData);
             Tasks.await(saveTask);
             sessionManager.saveSession(uid, email, password);
             return uid;
@@ -61,6 +68,16 @@ public class AuthRepositoryImpl implements AuthRepository {
             String uid = user.getUid();
             sessionManager.saveSession(uid, email, password);
             return uid;
+        });
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Override
+    public Result<String, FirebaseError> resetPassword(String email) {
+        return SafeCall.safeCall(() -> {
+            Task<Void> task = firebaseAuth.sendPasswordResetEmail(email);
+            Tasks.await(task);
+            return "Password reset email sent.";
         });
     }
 

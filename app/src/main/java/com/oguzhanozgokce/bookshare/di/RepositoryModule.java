@@ -23,4 +23,5 @@ public abstract class RepositoryModule {
     @Binds
     @Singleton
     public abstract AuthRepository bindUserRepository(AuthRepositoryImpl impl);
+    
 }

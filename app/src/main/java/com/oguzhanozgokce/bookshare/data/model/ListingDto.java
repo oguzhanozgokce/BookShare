@@ -15,6 +15,14 @@ public class ListingDto {
     public String endDate;
     public String createdAt;
     public String updatedAt;
+    public String userId;
+    public String author;
+    public String isbn;
+    public java.util.List<String> imageUrls;
+    public String publisher;
+    public Integer publishYear;
+    public Integer pageCount;
+    public String language;
 
     public ListingDto() {}
 }

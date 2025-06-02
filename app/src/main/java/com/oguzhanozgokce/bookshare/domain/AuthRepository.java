@@ -6,5 +6,6 @@ import com.oguzhanozgokce.bookshare.domain.error.FirebaseError;
 public interface AuthRepository {
     Result<String, FirebaseError> registerUser(String name, String email, String password);
     Result<String, FirebaseError> loginUser(String email, String password);
+    Result<String, FirebaseError> resetPassword(String email);
     String getCurrentUserId();
 }

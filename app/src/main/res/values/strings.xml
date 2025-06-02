@@ -10,4 +10,11 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="listings_list_content_desc">List of book listings</string>
+
+    <string name="back">Geri</string>
+    <string name="reset_password">Şifreyi Sıfırla</string>
+    <string name="reset_password_instructions">Şifrenizi sıfırlamak için kayıtlı e-posta adresinizi girin. Size bir sıfırlama bağlantısı göndereceğiz.</string>
+    <string name="email">E-posta</string>
+    <string name="send_reset_link">Sıfırlama Bağlantısı Gönder</string>
+    <string name="reset_link_sent">Reset link send</string>
 </resources>

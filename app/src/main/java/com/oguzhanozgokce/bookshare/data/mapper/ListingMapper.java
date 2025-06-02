@@ -21,7 +21,15 @@ public class ListingMapper {
                 safe(dto.startDate),
                 safe(dto.endDate),
                 safe(dto.createdAt),
-                safe(dto.updatedAt)
+                safe(dto.updatedAt),
+                safe(dto.userId),
+                safe(dto.author),
+                safe(dto.isbn),
+                dto.imageUrls != null ? dto.imageUrls : new java.util.ArrayList<>(),
+                safe(dto.publisher),
+                dto.publishYear != null ? dto.publishYear : 0,
+                dto.pageCount != null ? dto.pageCount : 0,
+                safe(dto.language)
         );
     }
 

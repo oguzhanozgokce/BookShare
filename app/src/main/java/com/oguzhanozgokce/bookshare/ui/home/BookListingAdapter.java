@@ -13,16 +13,30 @@ import com.oguzhanozgokce.bookshare.R;
 import com.oguzhanozgokce.bookshare.databinding.BookItemLayoutBinding;
 import com.oguzhanozgokce.bookshare.domain.model.Listing;
 
+import java.util.Set;
+
 public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.BookViewHolder> {
     public interface OnItemClickListener {
         void onItemClick(Listing listing);
     }
 
-    private final OnItemClickListener clickListener;
+    public interface OnSaveClickListener {
+        void onSaveClick(Listing listing, int position);
+    }
 
-    public BookListingAdapter(OnItemClickListener clickListener) {
+    private final OnItemClickListener clickListener;
+    private final OnSaveClickListener saveClickListener;
+    private Set<String> savedListingIds;
+
+    public BookListingAdapter(OnItemClickListener clickListener, OnSaveClickListener saveClickListener) {
         super(DIFF_CALLBACK);
         this.clickListener = clickListener;
+        this.saveClickListener = saveClickListener;
+    }
+
+    public void updateSavedListings(Set<String> savedListingIds) {
+        this.savedListingIds = savedListingIds;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -35,7 +49,8 @@ public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        holder.bind(getItem(position), clickListener);
+        boolean isSaved = savedListingIds != null && savedListingIds.contains(getItem(position).getId());
+        holder.bind(getItem(position), clickListener, saveClickListener, isSaved);
     }
 
     static class BookViewHolder extends RecyclerView.ViewHolder {
@@ -46,7 +61,7 @@ public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.
             this.binding = binding;
         }
 
-        public void bind(Listing listing, OnItemClickListener clickListener) {
+        public void bind(Listing listing, OnItemClickListener clickListener, OnSaveClickListener saveClickListener, boolean isSaved) {
             String formattedPrice = listing.getPrice() > 0
                     ? listing.getPrice() + " \u20BA"
                     : "Free";
@@ -55,18 +70,44 @@ public class BookListingAdapter extends ListAdapter<Listing, BookListingAdapter.
             binding.textDescription.setText(listing.getDescription());
             binding.textPrice.setText(formattedPrice);
             binding.textLocation.setText(listing.getLocation());
-            binding.textType.setText(listing.getType().name());
-            GradientDrawable background = (GradientDrawable)
-                    ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.genre_tag_background);
 
-            if (background != null) {
-                background.setColor(ContextCompat.getColor(binding.getRoot().getContext(), listing.getGenre().getColorResId()));
-                binding.textGenre.setBackground(background);
+            // Type formatla
+            String typeText = listing.getType().name().equals("FOR_SALE") ? "Satılık" : "Kiralık";
+            binding.textType.setText(typeText);
+
+            // Genre göster
+            if (listing.getGenre() != null) {
+                binding.textGenre.setText(listing.getGenre().getDisplayText());
+                GradientDrawable background = (GradientDrawable)
+                        ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.genre_tag_background);
+
+                if (background != null) {
+                    background.setColor(ContextCompat.getColor(binding.getRoot().getContext(), listing.getGenre().getColorResId()));
+                    binding.textGenre.setBackground(background);
+                }
             }
 
+            // Kaydetme ikonu durumunu güncelle
+            if (isSaved) {
+                binding.iconSave.setImageResource(R.drawable.ic_bookmark_24);
+                binding.iconSave.setColorFilter(ContextCompat.getColor(binding.getRoot().getContext(), R.color.primary));
+            } else {
+                binding.iconSave.setImageResource(R.drawable.ic_bookmark_border_24);
+                binding.iconSave.setColorFilter(ContextCompat.getColor(binding.getRoot().getContext(), R.color.text_hint));
+            }
+
+            // Save ikonu click listener
+            binding.iconSave.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && saveClickListener != null) {
+                    saveClickListener.onSaveClick(listing, position);
+                }
+            });
+
+            // Ana item click listener
             binding.getRoot().setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
+                if (position != RecyclerView.NO_POSITION && clickListener != null) {
                     clickListener.onItemClick(listing);
                 }
             });

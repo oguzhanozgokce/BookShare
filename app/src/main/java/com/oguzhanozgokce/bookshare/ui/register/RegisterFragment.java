@@ -48,6 +48,9 @@ public class RegisterFragment extends Fragment {
 
             viewModel.registerUser(name, email, password);
         });
+        binding.iconBack.setOnClickListener(v -> {
+            backNavigate();
+        });
     }
 
     private void setupObservers() {
@@ -66,5 +69,10 @@ public class RegisterFragment extends Fragment {
                     break;
             }
         });
+    }
+
+    private void backNavigate() {
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.popBackStack();
     }
 }

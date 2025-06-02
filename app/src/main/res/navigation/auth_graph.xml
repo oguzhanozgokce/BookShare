@@ -28,6 +28,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/auth_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -42,4 +45,9 @@
             app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/navigation" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.oguzhanozgokce.bookshare.ui.resetpassword.ResetPasswordFragment"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" />
 </navigation>

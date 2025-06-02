@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.purchase.PurchaseFragment">
+
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:elevation="2dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/background"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:title="Satın Al"
+            app:titleTextColor="@color/text_primary"
+            app:navigationIconTint="@color/primary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Address Information Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/background"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_worksans"
+                        android:text="Teslimat Bilgileri"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_worksans"
+                            android:hint="Ad Soyad"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_worksans"
+                            android:hint="Telefon Numarası"
+                            android:inputType="phone"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_worksans"
+                            android:hint="Adres"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:minLines="2"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeColor="@color/primary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_worksans"
+                                android:hint="Şehir"
+                                android:inputType="text"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="0dp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeColor="@color/primary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextPostalCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_worksans"
+                                android:hint="Posta Kodu"
+                                android:inputType="number"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Payment Method Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPaymentMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/background"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_worksans"
+                        android:text="Ödeme Yöntemi"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupPaymentMethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioCreditCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Kredi/Banka Kartı"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            app:buttonTint="@color/primary" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/radioCashOnDelivery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Kapıda Ödeme"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            app:buttonTint="@color/primary" />
+
+                    </RadioGroup>
+
+                    <!-- Credit Card Details (Initially Hidden) -->
+                    <LinearLayout
+                        android:id="@+id/layoutCreditCardDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeColor="@color/primary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextCardNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_worksans"
+                                android:hint="Kart Numarası"
+                                android:inputType="number"
+                                android:maxLength="19"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxCornerRadiusBottomEnd="12dp"
+                                app:boxCornerRadiusBottomStart="12dp"
+                                app:boxCornerRadiusTopEnd="12dp"
+                                app:boxCornerRadiusTopStart="12dp"
+                                app:boxStrokeColor="@color/primary">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/editTextExpiry"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_worksans"
+                                    android:hint="MM/YY"
+                                    android:inputType="number"
+                                    android:maxLength="5"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="16sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <View
+                                android:layout_width="12dp"
+                                android:layout_height="0dp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxCornerRadiusBottomEnd="12dp"
+                                app:boxCornerRadiusBottomStart="12dp"
+                                app:boxCornerRadiusTopEnd="12dp"
+                                app:boxCornerRadiusTopStart="12dp"
+                                app:boxStrokeColor="@color/primary">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/editTextCVV"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_worksans"
+                                    android:hint="CVV"
+                                    android:inputType="numberPassword"
+                                    android:maxLength="3"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="16sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeColor="@color/primary">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextCardHolderName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_worksans"
+                                android:hint="Kart Sahibinin Adı"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Order Summary Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/background"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_worksans"
+                        android:text="Sipariş Özeti"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Kitap Adı:"
+                            android:textColor="@color/text_hint"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textBookTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Clean Code"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="İşlem Türü:"
+                            android:textColor="@color/text_hint"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textTransactionType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Satın Al"
+                            android:textColor="@color/text_hint"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="Tutar:"
+                            android:textColor="@color/text_hint"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textTotalAmount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/font_worksans"
+                            android:text="250 ₺"
+                            android:textColor="@color/text_price"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Action Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="@color/background"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="12dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCompletePurchase"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/font_worksans"
+                android:text="Satın Almayı Tamamla"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_shopping_cart_24"
+                app:iconTint="@color/text_primary" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
