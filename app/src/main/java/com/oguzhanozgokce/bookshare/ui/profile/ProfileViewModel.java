@@ -51,13 +51,40 @@ public class ProfileViewModel extends ViewModel {
         currentState.setUserEmail(email);
         _state.setValue(currentState);
 
-        // For demo purposes, set empty lists
-        // In a real app, you would fetch transaction history from Firebase
-        currentState.setBorrowedBooks(new ArrayList<>());
-        currentState.setPurchasedBooks(new ArrayList<>());
-        currentState.setLoading(false);
-        currentState.setErrorMessage("");
-        _state.setValue(currentState);
+        // Load transaction histories in background
+        new Thread(() -> {
+            try {
+                var borrowResult = bookRepository.getBorrowHistory(userId);
+                var purchaseResult = bookRepository.getPurchaseHistory(userId);
+
+                ProfileState newState = getCurrentState();
+                newState.setLoading(false);
+                newState.setUserEmail(email);
+
+                if (borrowResult.isSuccess()) {
+                    newState.setBorrowedBooks(borrowResult.getData());
+                } else {
+                    newState.setBorrowedBooks(new ArrayList<>()); // Set empty list on error
+                }
+
+                if (purchaseResult.isSuccess()) {
+                    newState.setPurchasedBooks(purchaseResult.getData());
+                } else {
+                    newState.setPurchasedBooks(new ArrayList<>()); // Set empty list on error
+                }
+
+                newState.setErrorMessage("");
+                _state.postValue(newState);
+
+            } catch (Exception e) {
+                ProfileState errorState = getCurrentState();
+                errorState.setLoading(false);
+                errorState.setBorrowedBooks(new ArrayList<>());
+                errorState.setPurchasedBooks(new ArrayList<>());
+                errorState.setErrorMessage("İşlem geçmişi yüklenirken hata oluştu");
+                _state.postValue(errorState);
+            }
+        }).start();
     }
 
     public void logout() {

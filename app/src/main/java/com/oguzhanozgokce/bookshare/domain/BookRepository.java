@@ -26,4 +26,8 @@ public interface BookRepository {
     Task<Void> removeListing(String userId, String listingId);
 
     Result<String, FirebaseError> getListingOwnerId(String listingId);
+
+    Result<List<PurchaseRecord>, FirebaseError> getPurchaseHistory(String userId);
+
+    Result<List<BorrowRecord>, FirebaseError> getBorrowHistory(String userId);
 }

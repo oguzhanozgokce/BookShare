@@ -285,4 +285,36 @@ public class BookRepositoryImpl implements BookRepository {
             throw new Exception("Listing owner not found");
         });
     }
+
+    @Override
+    public Result<List<PurchaseRecord>, FirebaseError> getPurchaseHistory(String userId) {
+        return SafeCall.safeCall(() -> {
+            DocumentSnapshot userDoc = Tasks.await(db.collection("users").document(userId).get());
+            Map<String, Object> purchaseHistoryMap = (Map<String, Object>) userDoc.get("purchaseHistory");
+            List<PurchaseRecord> purchaseRecords = new ArrayList<>();
+            if (purchaseHistoryMap != null) {
+                for (Object value : purchaseHistoryMap.values()) {
+                    PurchaseRecordDto dto = new Gson().fromJson(new Gson().toJson(value), PurchaseRecordDto.class);
+                    purchaseRecords.add(TransactionMapper.toPurchaseRecordDomain(dto));
+                }
+            }
+            return purchaseRecords;
+        });
+    }
+
+    @Override
+    public Result<List<BorrowRecord>, FirebaseError> getBorrowHistory(String userId) {
+        return SafeCall.safeCall(() -> {
+            DocumentSnapshot userDoc = Tasks.await(db.collection("users").document(userId).get());
+            Map<String, Object> borrowHistoryMap = (Map<String, Object>) userDoc.get("borrowHistory");
+            List<BorrowRecord> borrowRecords = new ArrayList<>();
+            if (borrowHistoryMap != null) {
+                for (Object value : borrowHistoryMap.values()) {
+                    BorrowRecordDto dto = new Gson().fromJson(new Gson().toJson(value), BorrowRecordDto.class);
+                    borrowRecords.add(TransactionMapper.toBorrowRecordDomain(dto));
+                }
+            }
+            return borrowRecords;
+        });
+    }
 }
