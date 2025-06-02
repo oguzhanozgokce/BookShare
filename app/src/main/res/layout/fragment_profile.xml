@@ -5,41 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/card_background_tinted"
-    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:padding="20dp"
     tools:context=".ui.profile.ProfileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <!-- Profile Header Card -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardProfileHeader"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="28dp">
+                android:padding="32dp">
 
                 <!-- Profile Avatar -->
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageProfileAvatar"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@color/primary"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@color/text_tag_green"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_person"
                     app:shapeAppearanceOverlay="@style/CircleImageView"
@@ -50,9 +48,9 @@
                     android:id="@+id/textUserEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="12dp"
                     android:textColor="@color/oguz_dark_gray"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="user@example.com" />
 
@@ -62,57 +60,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     tools:text="BookShare üyesi" />
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Statistics Cards -->
+        <!-- Statistics Cards Container -->
         <LinearLayout
             android:id="@+id/layoutStatistics"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardProfileHeader">
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
 
             <!-- Borrowed Books Count -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/genre_education_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <TextView
                         android:id="@+id/textBorrowedCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/primary"
-                        android:textSize="28sp"
+                        android:textSize="32sp"
                         android:textStyle="bold"
                         tools:text="3" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:text="Ödünç Alınan"
                         android:textColor="@color/text_secondary"
-                        android:textSize="13sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -123,35 +118,35 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/bg_tag_yellow"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <TextView
                         android:id="@+id/textPurchasedCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/oguz_dark_yellow"
-                        android:textSize="28sp"
+                        android:textSize="32sp"
                         android:textStyle="bold"
                         tools:text="7" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:text="Satın Alınan"
                         android:textColor="@color/text_secondary"
-                        android:textSize="13sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -163,15 +158,12 @@
         <!-- Borrowed Books Section -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBorrowedBooks"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutStatistics">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -182,17 +174,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/genre_education_bg"
+                    android:background="@color/genre_science_bg"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="16dp"
                         android:src="@drawable/ic_book_24"
-                        app:tint="@color/primary" />
+                        app:tint="@color/text_tag_green" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -200,7 +192,7 @@
                         android:layout_weight="1"
                         android:text="Ödünç Alınan Kitaplar"
                         android:textColor="@color/oguz_dark_gray"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -208,52 +200,60 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
-                        android:padding="8dp"
+                        android:padding="12dp"
                         android:text="Tümünü Gör"
-                        android:textColor="@color/primary"
-                        android:textSize="14sp"
+                        android:textColor="@color/text_tag_green"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
 
                 </LinearLayout>
 
-                <!-- Borrowed Books RecyclerView -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerBorrowedBooks"
+                <!-- Borrowed Books Content -->
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/item_transaction_book" />
+                    android:layout_height="wrap_content">
 
-                <!-- Empty State for Borrowed Books -->
-                <LinearLayout
-                    android:id="@+id/layoutEmptyBorrowed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="40dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="16dp"
-                        android:alpha="0.6"
-                        android:src="@drawable/ic_book_24"
-                        app:tint="@color/oguz_light_dark_gray" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Borrowed Books RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerBorrowedBooks"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Henüz ödünç alınan kitap yok"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="14sp" />
+                        android:nestedScrollingEnabled="false"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="20dp"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_transaction_book" />
 
-                </LinearLayout>
+                    <!-- Empty State for Borrowed Books -->
+                    <LinearLayout
+                        android:id="@+id/layoutEmptyBorrowed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="48dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="20dp"
+                            android:alpha="0.6"
+                            android:src="@drawable/ic_book_24"
+                            app:tint="@color/oguz_light_dark_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Henüz ödünç alınan kitap yok"
+                            android:gravity="center"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -262,15 +262,12 @@
         <!-- Purchased Books Section -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPurchasedBooks"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             app:cardBackgroundColor="@color/card_background"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardBorrowedBooks">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -281,15 +278,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg_tag_yellow"
+                    android:background="@color/genre_fiction_bg"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="16dp"
                         android:src="@drawable/ic_shopping_cart"
                         app:tint="@color/oguz_dark_yellow" />
 
@@ -299,7 +296,7 @@
                         android:layout_weight="1"
                         android:text="Satın Alınan Kitaplar"
                         android:textColor="@color/oguz_dark_gray"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -307,52 +304,60 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
-                        android:padding="8dp"
+                        android:padding="12dp"
                         android:text="Tümünü Gör"
                         android:textColor="@color/oguz_dark_yellow"
-                        android:textSize="14sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
 
                 </LinearLayout>
 
-                <!-- Purchased Books RecyclerView -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerPurchasedBooks"
+                <!-- Purchased Books Content -->
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/item_transaction_book" />
+                    android:layout_height="wrap_content">
 
-                <!-- Empty State for Purchased Books -->
-                <LinearLayout
-                    android:id="@+id/layoutEmptyPurchased"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="40dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="16dp"
-                        android:alpha="0.6"
-                        android:src="@drawable/ic_shopping_cart"
-                        app:tint="@color/oguz_light_dark_gray" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Purchased Books RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerPurchasedBooks"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Henüz satın alınan kitap yok"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="14sp" />
+                        android:nestedScrollingEnabled="false"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="20dp"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_transaction_book" />
 
-                </LinearLayout>
+                    <!-- Empty State for Purchased Books -->
+                    <LinearLayout
+                        android:id="@+id/layoutEmptyPurchased"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="48dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="20dp"
+                            android:alpha="0.6"
+                            android:src="@drawable/ic_shopping_cart"
+                            app:tint="@color/oguz_light_dark_gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Henüz satın alınan kitap yok"
+                            android:gravity="center"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -362,22 +367,19 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonLogout"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="32dp"
             android:text="Çıkış Yap"
-            android:textColor="@color/oguz_dark_yellow"
-            android:textSize="16sp"
+            android:textColor="@color/text_tag_green"
+            android:textSize="17sp"
             android:textStyle="bold"
-            app:cornerRadius="16dp"
+            app:cornerRadius="20dp"
             app:icon="@drawable/ic_logout"
-            app:iconTint="@color/oguz_dark_yellow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardPurchasedBooks"
-            app:strokeColor="@color/oguz_dark_yellow"
+            app:iconTint="@color/text_tag_green"
+            app:strokeColor="@color/text_tag_green"
             app:strokeWidth="2dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

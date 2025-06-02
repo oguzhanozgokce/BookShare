@@ -7,6 +7,7 @@ import com.oguzhanozgokce.bookshare.domain.AuthRepository;
 import com.oguzhanozgokce.bookshare.domain.error.FirebaseError;
 
 import java.util.concurrent.Executors;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -17,6 +18,11 @@ public class LoginViewModel extends BaseViewModel<LoginState> {
 
     private final AuthRepository authRepository;
     private final SessionManager sessionManager;
+
+    // Email validation pattern
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    );
 
     @Override
     protected LoginState initialState() {
@@ -37,6 +43,13 @@ public class LoginViewModel extends BaseViewModel<LoginState> {
     }
 
     public void login(String email, String password) {
+        // Input validasyonları
+        String validationError = validateLoginInputs(email, password);
+        if (validationError != null) {
+            updateState(state -> state.withError(validationError));
+            return;
+        }
+
         updateState(LoginState::withLoading);
         Executors.newSingleThreadExecutor().execute(() -> {
             Result<String, FirebaseError> result = authRepository.loginUser(email, password);
@@ -47,5 +60,33 @@ public class LoginViewModel extends BaseViewModel<LoginState> {
                 updateState(state -> state.withError(error.getMessage()));
             }
         });
+    }
+
+    private String validateLoginInputs(String email, String password) {
+        // Email boş kontrolü
+        if (email == null || email.trim().isEmpty()) {
+            return "Email adresi boş olamaz";
+        }
+
+        // Email format kontrolü
+        if (!isValidEmail(email.trim())) {
+            return "Geçerli bir email adresi girin";
+        }
+
+        // Şifre boş kontrolü
+        if (password == null || password.trim().isEmpty()) {
+            return "Şifre boş olamaz";
+        }
+
+        // Şifre minimum uzunluk kontrolü
+        if (password.trim().length() < 6) {
+            return "Şifre en az 6 karakter olmalıdır";
+        }
+
+        return null; 
+    }
+
+    private boolean isValidEmail(String email) {
+        return EMAIL_PATTERN.matcher(email).matches();
     }
 }
